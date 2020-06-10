@@ -6,7 +6,7 @@ import uk.co.bbc.jupiter.framework.BasePage;
 
 public class BrowsePage extends BasePage {
 
-    private static final String BROWSEURL = "https://test.jupiter.bbc.co.uk";
+    private static final String JUPWEB_TEST_URL = "https://test.jupiter.bbc.co.uk";
     private static final By board = By.id("#search-input");
 
 
@@ -15,6 +15,6 @@ public class BrowsePage extends BasePage {
     }
 
     public void navigateToBrowsePage() {
-        getDriver().navigate().to(BROWSEURL);
+        getDriver().navigate().to(JUPWEB_TEST_URL);
     }
 }

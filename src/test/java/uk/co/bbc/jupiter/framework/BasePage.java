@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
     private final WebDriver driver;
+    private WebDriverWait wait;
     protected WebDriverWait driverWait(long timeoutSeconds) {
         return new WebDriverWait(driver, timeoutSeconds);
     }
@@ -13,6 +14,10 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public WebDriverWait getWait() {
+        return wait;
     }
 
     public WebDriver getDriver() {
