@@ -29,6 +29,6 @@ public class BrowseStepdefs {
 
     @And("Clip count should be displayed")
     public void clipCountShouldBeDisplayed() throws Throwable {
-        System.out.println("3");
+        System.out.println("4");
     }
 }
