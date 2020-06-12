@@ -6,19 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import uk.co.bbc.jupiter.framework.BasePage;
-import uk.co.bbc.jupiter.stepdefs.Hooks;
 
 public class LoginPage extends BasePage {
-    private final Hooks hooks;
     private static final By emailFieldSelector = By.id("email");
     private static final By passwordFieldSelector = By.id("password");
     private static final By loginButtonSelector = By.cssSelector("button.authButton");
 
     private static final String JUPWEB_TEST_URL = "https://test.jupiter.bbc.co.uk";
 
-    public LoginPage(WebDriver driver, Hooks hooks) {
+    public LoginPage(WebDriver driver) {
         super(driver);
-        this.hooks = hooks;
     }
 
     public void waitForElement(By element){

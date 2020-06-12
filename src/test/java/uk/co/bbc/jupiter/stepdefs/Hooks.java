@@ -10,7 +10,7 @@ public class Hooks {
 
     private static boolean initialized = false;
     private WebDriver driver;
-    WebDriverWait wait;
+    private WebDriverWait wait;
     private static final Integer timeoutInSeconds = 10;
 
     @Before
