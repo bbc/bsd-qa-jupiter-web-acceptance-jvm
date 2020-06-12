@@ -11,15 +11,16 @@ public class BrowseStepdefs {
     private final Hooks hooks;
     private LoginPage loginPage;
     private BrowsePage browsePage;
+    private final WebDriver driver;
 
 
     public BrowseStepdefs(Hooks hooks) {
         this.hooks = hooks;
+        this.driver = hooks.getDriver();
     }
 
     @Given("I navigate to Jupiter Web Homepage")
     public void iNavigateToJupiterWebHomepage() throws Throwable {
-        WebDriver driver = hooks.getDriver();
         loginPage = new LoginPage(driver);
         loginPage.navigateToLoginPage();
         loginPage.enterEmailField();
@@ -29,7 +30,6 @@ public class BrowseStepdefs {
 
     @Then("The {int} most recent clips from all sites are displayed in grid view by default")
     public void theMostRecentClipsFromAllSitesAreDisplayedInGridViewByDefault(int arg0) throws Throwable {
-        WebDriver driver = hooks.getDriver();
         browsePage = new BrowsePage(driver);
         browsePage.countNumberItems();
         Thread.sleep(5000);
