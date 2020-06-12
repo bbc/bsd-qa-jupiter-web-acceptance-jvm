@@ -30,10 +30,6 @@ public class Hooks {
         wait = new WebDriverWait(driver, timeoutInSeconds);
     }
 
-    public WebDriverWait getWait() {
-        return wait;
-    }
-
 
     @After
     public void disposeWebDriver() throws Throwable {

@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import uk.co.bbc.jupiter.framework.BasePage;
 
 public class BrowsePage extends BasePage {
@@ -23,14 +21,8 @@ public class BrowsePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void waitForElement(WebElement element){
-        WebDriverWait wait = new WebDriverWait(getDriver(),10);
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
     public void searchItem(String searchString){
         this.waitForElement(searchInput);
         searchInput.sendKeys(searchString);
-        searchButton.click();
     }
 }

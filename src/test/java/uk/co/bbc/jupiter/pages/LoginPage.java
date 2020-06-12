@@ -27,11 +27,6 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void waitForElement(WebElement element){
-        WebDriverWait wait = new WebDriverWait(getDriver(),10);
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
     public void waitForElement2(By element){
         WebDriverWait wait = new WebDriverWait(getDriver(),10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -48,7 +43,6 @@ public class LoginPage extends BasePage {
 
     public void enterPasswordField(){
         this.waitForElement(passwordField);
-//        WebElement passwordField = getDriver().findElement(passwordFieldSelector);
         passwordField.sendKeys("password098");
     }
 
