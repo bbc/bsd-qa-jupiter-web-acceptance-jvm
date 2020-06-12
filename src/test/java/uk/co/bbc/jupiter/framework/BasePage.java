@@ -6,22 +6,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+public abstract class BasePage {
 
     private final WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
     private static Boolean elementPresentFlag = false;
-    protected WebDriverWait driverWait(long timeoutSeconds) {
-        return new WebDriverWait(driver, timeoutSeconds);
-    }
-
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver,10);
     }
 
     public void waitForElement(WebElement element){
-        WebDriverWait wait = new WebDriverWait(getDriver(),10);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
@@ -33,10 +29,6 @@ public class BasePage {
             elementPresentFlag = true;
         }
         return elementPresentFlag.booleanValue();
-    }
-
-    public WebDriverWait getWait() {
-        return wait;
     }
 
     public WebDriver getDriver() {

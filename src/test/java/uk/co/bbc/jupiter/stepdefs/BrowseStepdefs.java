@@ -31,7 +31,8 @@ public class BrowseStepdefs {
     public void theMostRecentClipsFromAllSitesAreDisplayedInGridViewByDefault(int arg0) throws Throwable {
         WebDriver driver = hooks.getDriver();
         browsePage = new BrowsePage(driver);
-        browsePage.searchItem("zztest");
+        browsePage.countNumberItems();
+        Thread.sleep(5000);
     }
 
     @And("Clip count should be displayed")
