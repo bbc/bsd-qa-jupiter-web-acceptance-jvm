@@ -1,5 +1,6 @@
 package uk.co.bbc.jupiter.framework;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,6 +10,7 @@ public class BasePage {
 
     private final WebDriver driver;
     private WebDriverWait wait;
+    private static Boolean elementPresentFlag = false;
     protected WebDriverWait driverWait(long timeoutSeconds) {
         return new WebDriverWait(driver, timeoutSeconds);
     }
@@ -21,6 +23,16 @@ public class BasePage {
     public void waitForElement(WebElement element){
         WebDriverWait wait = new WebDriverWait(getDriver(),10);
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public boolean isElementPresent(WebElement we)
+    {
+        try {
+            we.getTagName();
+        } catch (NoSuchElementException e) {
+            elementPresentFlag = true;
+        }
+        return elementPresentFlag.booleanValue();
     }
 
     public WebDriverWait getWait() {

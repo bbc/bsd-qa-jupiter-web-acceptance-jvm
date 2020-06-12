@@ -25,6 +25,7 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
+        isElementPresent(emailField);
     }
 
     public void waitForElement2(By element){
@@ -37,17 +38,17 @@ public class LoginPage extends BasePage {
     }
 
     public void enterEmailField(){
-        this.waitForElement(emailField);
+        waitForElement(emailField);
         emailField.sendKeys("ZZJupt30");
     }
 
     public void enterPasswordField(){
-        this.waitForElement(passwordField);
+        waitForElement(passwordField);
         passwordField.sendKeys("password098");
     }
 
     public void submitLogin(){
-        this.waitForElement(loginButton);
+        waitForElement(loginButton);
         loginButton.click();
     }
 

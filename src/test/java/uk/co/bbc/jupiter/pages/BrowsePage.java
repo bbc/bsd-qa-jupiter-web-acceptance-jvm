@@ -19,10 +19,11 @@ public class BrowsePage extends BasePage {
     public BrowsePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
+        isElementPresent(searchInput);
     }
 
     public void searchItem(String searchString){
-        this.waitForElement(searchInput);
+        waitForElement(searchInput);
         searchInput.sendKeys(searchString);
     }
 }
