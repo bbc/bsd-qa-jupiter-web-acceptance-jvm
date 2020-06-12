@@ -3,22 +3,36 @@ package uk.co.bbc.jupiter.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import uk.co.bbc.jupiter.framework.BasePage;
 
 public class LoginPage extends BasePage {
-    private static final By emailFieldSelector = By.id("email");
-    private static final By passwordFieldSelector = By.id("password");
-    private static final By loginButtonSelector = By.cssSelector("button.authButton");
 
     private static final String JUPWEB_TEST_URL = "https://test.jupiter.bbc.co.uk";
 
+    @FindBy(id = "email")
+    private WebElement emailField;
+
+    @FindBy(id = "password")
+    private WebElement passwordField;
+
+    @FindBy(css = "button.authButton")
+    private WebElement loginButton;
+
     public LoginPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public void waitForElement(By element){
+    public void waitForElement(WebElement element){
+        WebDriverWait wait = new WebDriverWait(getDriver(),10);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitForElement2(By element){
         WebDriverWait wait = new WebDriverWait(getDriver(),10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
@@ -28,19 +42,18 @@ public class LoginPage extends BasePage {
     }
 
     public void enterEmailField(){
-        this.waitForElement(emailFieldSelector);
-        WebElement emailField = getDriver().findElement(emailFieldSelector);
+        this.waitForElement(emailField);
         emailField.sendKeys("ZZJupt30");
     }
 
     public void enterPasswordField(){
-        this.waitForElement(passwordFieldSelector);
-        WebElement passwordField = getDriver().findElement(passwordFieldSelector);
+        this.waitForElement(passwordField);
+//        WebElement passwordField = getDriver().findElement(passwordFieldSelector);
         passwordField.sendKeys("password098");
     }
 
     public void submitLogin(){
-        WebElement loginButton = getDriver().findElement(loginButtonSelector);
+        this.waitForElement(loginButton);
         loginButton.click();
     }
 
