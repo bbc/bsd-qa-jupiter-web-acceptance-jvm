@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public abstract class BasePage {
 
     private final WebDriver driver;
@@ -19,6 +21,18 @@ public abstract class BasePage {
 
     public void waitForElement(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitForElements(List<WebElement> elements){
+        wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+    }
+
+    public void forceWait(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean isElementPresent(WebElement we)

@@ -33,6 +33,7 @@ public class Hooks {
 
     @After
     public void disposeWebDriver() throws Throwable {
+        initialized = false;
         driver.close();
         driver.quit();
     }
