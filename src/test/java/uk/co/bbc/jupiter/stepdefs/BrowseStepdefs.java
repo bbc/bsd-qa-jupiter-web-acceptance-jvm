@@ -8,6 +8,7 @@ import uk.co.bbc.jupiter.pages.BrowsePage;
 import uk.co.bbc.jupiter.pages.LoginPage;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class BrowseStepdefs {
     private final Hooks hooks;
@@ -38,6 +39,6 @@ public class BrowseStepdefs {
 
     @And("Clip count should be displayed")
     public void clipCountShouldBeDisplayed() throws Throwable {
-
+        assertTrue(browsePage.getResultsStats().contains("50 of "));
     }
 }

@@ -23,10 +23,9 @@ public class BrowsePage extends BasePage {
     private WebElement header;
 
     @FindBy(css = "header.components-header-style__item--3hTry+div section div form+div")
-    private WebElement numberOfResultsDisplayed;
+    private WebElement resultsStats;
 
-    @FindBys
-    (@FindBy(css = "li[class^='components-list-']"))
+    @FindBys(@FindBy(css = "li[class^='components-list-']"))
     private List<WebElement> itemGrids;
 
     public BrowsePage(WebDriver driver) {
@@ -44,5 +43,10 @@ public class BrowsePage extends BasePage {
     public int countNumberItems() {
         waitForElements(itemGrids);
         return itemGrids.size();
+    }
+
+    public String getResultsStats(){
+        waitForElement(resultsStats);
+        return resultsStats.getText();
     }
 }
