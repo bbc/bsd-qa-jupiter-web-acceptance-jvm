@@ -39,12 +39,12 @@ public class LoginPage extends BasePage {
 
     public void enterEmailField(){
         waitForElement(emailField);
-        emailField.sendKeys("ZZJupt30");
+        emailField.sendKeys(""); // need to add reader
     }
 
     public void enterPasswordField(){
         waitForElement(passwordField);
-        passwordField.sendKeys("password098");
+        passwordField.sendKeys(""); //need to add reader
     }
 
     public void submitLogin(){
